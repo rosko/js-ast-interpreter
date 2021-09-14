@@ -5,6 +5,7 @@ module.exports = {
     BlockStatement: require('./BlockStatement'),
     BreakStatement: require('./BreakStatement'),
     CallExpression: require('./CallExpression'),
+    ConditionalExpression: require('./ConditionalExpression'),
     EmptyStatement: require('./EmptyStatement'),
     ExpressionStatement: require('./ExpressionStatement'),
     ForStatement: require('./ForStatement'),
@@ -13,10 +14,12 @@ module.exports = {
     Identifier: require('./Identifier'),
     IfStatement: require('./IfStatement'),
     Literal: require('./Literal'),
+    LogicalExpression: require('./LogicalExpression'),
     MemberExpression: require('./MemberExpression'),
     NewExpression: require('./NewExpression'),
     ObjectExpression: require('./ObjectExpression'),
     Program: require('./Program'),
+    Property: require('./Property'),
     ReturnStatement: require('./ReturnStatement'),
     SwitchCase: require('./SwitchCase'),
     SwitchStatement: require('./SwitchStatement'),
@@ -25,4 +28,4 @@ module.exports = {
     VariableDeclaration: require('./VariableDeclaration'),
     VariableDeclarator: require('./VariableDeclarator'),
     WhileStatement: require('./WhileStatement'),
-}
+};

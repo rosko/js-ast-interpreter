@@ -5,13 +5,14 @@ module.exports = class ObjectExpression extends Node {
     constructor(node, scope) {
         super(node, scope);
         this.scope = scope;
+        this.properties = node.properties.map(n => construct(n, this.scope));
     }
 
     run() {
         const obj = {};
 
-        for (let p of this.node.properties) {
-            obj[p.key.name] = construct(p.value, this.scope).run();
+        for (let property of this.properties) {
+            property.run(obj);
         }
 
         return obj;

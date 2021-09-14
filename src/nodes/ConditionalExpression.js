@@ -11,9 +11,9 @@ module.exports = class IfStatement extends Node {
 
     run(context) {
         if (this.test.run()) {
-            this.consequent.run(context);
+            return this.consequent.run(context);
         } else if (this.alternate) {
-            this.alternate.run(context);
+            return this.alternate.run(context);
         }
     }
 }
