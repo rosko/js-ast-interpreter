@@ -5,6 +5,7 @@ module.exports = class VariableDeclarator extends Node {
     constructor(node, scope) {
         super(node, scope);
         this.scope = scope;
+        this.scope.setOwn(node.id.name, undefined);
         this.__initScope = node.init && construct(node.init, scope);
     }
 

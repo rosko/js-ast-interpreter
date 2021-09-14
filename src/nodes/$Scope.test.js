@@ -1,26 +1,26 @@
-const { run } = require('../common/runner')
+const {run} = require('../common/runner');
 
 describe('function creates a new scope', () => {
-  it('overwrite', () => {
-    const global = { console: { log: jest.fn() }}
+    it('overwrite', () => {
+        const global = {console: {log: jest.fn()}};
 
-    run(`
+        run(`
       var name = 'Sam';
       function a() {
         var name = 'Wels';
         console.log(name);
       }
       a();
-    `, global)
-  
-    expect(global.console.log).toHaveBeenCalledTimes(1)
-    expect(global.console.log).toBeCalledWith('Wels')
-  })
+    `, global);
 
-  it('var hoisted', () => {
-    const global = { console: { log: jest.fn() }}
+        expect(global.console.log).toHaveBeenCalledTimes(1);
+        expect(global.console.log).toBeCalledWith('Wels');
+    })
 
-    run(`
+    it('var hoisted', () => {
+        const global = {console: {log: jest.fn()}};
+
+        run(`
       var name = 'Sam';
       function a() {
         console.log(name);
@@ -28,10 +28,10 @@ describe('function creates a new scope', () => {
         console.log(name);
       }
       a();
-    `, global)
-  
-    expect(global.console.log).toHaveBeenCalledTimes(2)
-    expect(global.console.log).toHaveBeenNthCalledWith(1, undefined)
-    expect(global.console.log).toHaveBeenNthCalledWith(2, 'Wels')
-  })
-})
+    `, global);
+
+        expect(global.console.log).toHaveBeenCalledTimes(2);
+        expect(global.console.log).toHaveBeenNthCalledWith(1, undefined);
+        expect(global.console.log).toHaveBeenNthCalledWith(2, 'Wels');
+    });
+});

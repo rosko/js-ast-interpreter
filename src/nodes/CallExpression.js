@@ -18,6 +18,7 @@ module.exports = class CallExpression extends Node {
         if (typeof callee == 'function' || callee instanceof $Function) {
             return callee.apply(callContext.call.this, this.arguments.map(a => a.run(context)))
         } else {
+            console.error(this.callee.node);
             throw new Error('not callable');
         }
     }
