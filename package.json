@@ -1,10 +1,9 @@
 {
   "dependencies": {
-    "acorn": "^5.7.2"
+    "acorn": "8.5.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.1",
-    "jest": "^23.5.0"
+    "jest": "27.2.0"
   },
   "scripts": {
     "test": "jest"

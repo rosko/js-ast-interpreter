@@ -1,15 +1,18 @@
-const Node = require('./Node')
+const Node = require('./Node');
+const {construct} = require('./utils');
 
 module.exports = class ReturnStatement extends Node {
-  constructor(node, scope) {
-    super(node, scope)
-    this.scope = scope
-    this.argument = construct(node.argument, scope)
-  }
+    constructor(node, scope) {
+        super(node, scope);
+        this.scope = scope;
+        this.argument = construct(node.argument, scope);
+    }
 
-  run() {
-    return this.argument.run()
-  }
+    run(context) {
+        const result = this.argument.run();
+        if (context && context.func) {
+            context.func.return = result;
+        }
+        return result;
+    }
 }
-
-var { construct } = require('./utils')

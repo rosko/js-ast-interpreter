@@ -1,6 +1,9 @@
-const acorn = require('acorn')
-const interpretor = require('./interpretor')
+const acorn = require('acorn');
+const interpreter = require('./interpreter');
 
-exports.run = function run(code, global) {
-  return interpretor(acorn.parse(code), global)
+exports.run = function run(code, scope) {
+    return interpreter(acorn.parse(code, {
+        ecmaVersion: 2020,
+        locations: false
+    }), scope);
 }

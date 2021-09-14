@@ -1,20 +1,19 @@
-const Node = require('./Node')
+const Node = require('./Node');
+const {construct} = require('./utils');
 
 module.exports = class IfStatement extends Node {
-  constructor(node, scope) {
-    super(node, scope)
-    this.test = construct(node.test, scope)
-    this.consequent = construct(node.consequent, scope)
-    this.alternate = node.alternate && construct(node.alternate, scope)
-  }
-
-  run(context) {
-    if (this.test.run()) {
-      this.consequent.run(context)
-    } else {
-      this.alternate && this.alternate.run()
+    constructor(node, scope) {
+        super(node, scope)
+        this.test = construct(node.test, scope);
+        this.consequent = construct(node.consequent, scope);
+        this.alternate = node.alternate && construct(node.alternate, scope);
     }
-  }
-}
 
-var { construct } = require('./utils')
+    run(context) {
+        if (this.test.run()) {
+            this.consequent.run(context);
+        } else {
+            this.alternate && this.alternate.run(context);
+        }
+    }
+}
