@@ -5,7 +5,7 @@ module.exports = class FunctionDeclaration extends Node {
     constructor(node, scope) {
         super(node, scope);
         const $function = new $Function(node, scope);
-        scope.setOwn(node.id.name, $function);
+        scope.setOwn(node.id.name, $function.createRuntimeFunction());
     }
 
     run() {
