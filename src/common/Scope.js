@@ -4,7 +4,7 @@ module.exports = class Scope {
         this.upper = upper
     }
 
-    has(key) {
+    hasOwn(key) {
         return key in this.dict
     }
 
@@ -16,12 +16,25 @@ module.exports = class Scope {
         let current = this
 
         while (current) {
-            if (current.has(key)) {
+            if (current.hasOwn(key)) {
                 return current.getOwn(key)
             } else {
                 current = current.upper
             }
         }
+    }
+
+    has(key) {
+        let current = this
+
+        while (current) {
+            if (current.hasOwn(key)) {
+                return true;
+            } else {
+                current = current.upper
+            }
+        }
+        return false;
     }
 
     setOwn(key, val) {
@@ -32,7 +45,7 @@ module.exports = class Scope {
         let current = this
 
         while (current) {
-            if (current.has(key)) {
+            if (current.hasOwn(key)) {
                 current.setOwn(key, val)
                 break
             } else {
