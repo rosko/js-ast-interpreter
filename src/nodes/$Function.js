@@ -44,6 +44,7 @@ module.exports = class $Function {
         );
 
         runtimeFunction.getAST = () => this.node;
+        runtimeFunction.getScope = () => this.scope;
 
         Object.defineProperty(
             runtimeFunction,
