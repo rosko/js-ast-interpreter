@@ -6,6 +6,7 @@ module.exports = {
     BreakStatement: require('./BreakStatement'),
     CallExpression: require('./CallExpression'),
     ConditionalExpression: require('./ConditionalExpression'),
+    DebuggerStatement: require('./DebuggerStatement'),
     EmptyStatement: require('./EmptyStatement'),
     ExpressionStatement: require('./ExpressionStatement'),
     ForStatement: require('./ForStatement'),
