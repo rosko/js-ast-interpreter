@@ -12,9 +12,15 @@ module.exports = class SwitchStatement extends Node {
     run(context) {
         const discriminant = this.discriminant.run();
 
+        let matched = false;
         for (const currentCase of this.cases) {
 
-            if (currentCase.test && currentCase.test.run() != discriminant) {
+            if (!matched && currentCase.test && currentCase.test.run() != discriminant) {
+                continue;
+            }
+
+            matched = true;
+            if (!currentCase.consequent?.length) {
                 continue;
             }
 
