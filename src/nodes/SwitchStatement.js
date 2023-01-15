@@ -20,7 +20,7 @@ module.exports = class SwitchStatement extends Node {
             }
 
             matched = true;
-            if (!currentCase.consequent?.length) {
+            if (!currentCase.consequent || !currentCase.consequent.length) {
                 continue;
             }
 
