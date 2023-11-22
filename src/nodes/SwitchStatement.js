@@ -12,6 +12,11 @@ module.exports = class SwitchStatement extends Node {
     run(context) {
         const discriminant = this.discriminant.run();
 
+        const loopContext = {
+            ...context,
+            loop: {}
+        };
+
         let matched = false;
         for (const currentCase of this.cases) {
 
@@ -24,12 +29,12 @@ module.exports = class SwitchStatement extends Node {
                 continue;
             }
 
-            currentCase.run(context);
+            currentCase.run(loopContext);
 
-            if (context.func && 'return' in context.func) {
-                return context.func.return;
+            if (loopContext.func && 'return' in loopContext.func) {
+                return loopContext.func.return;
             }
-            if (context.loop && context.loop.break) {
+            if (loopContext.loop && loopContext.loop.break) {
                 break;
             }
 
